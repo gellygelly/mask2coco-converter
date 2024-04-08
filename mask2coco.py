@@ -78,9 +78,6 @@ def get_coco_anno(annotations, file_name, mask, category_id, segm_id):
 
     return segm_id
 
-
-############### utils ###############
-
 def get_coco_categories():
 
     categories = [
@@ -103,6 +100,8 @@ def get_coco_categories():
 
     return categories
 
+
+############### utils ###############
 
 def remove_file_extension(file_name):
     
@@ -144,7 +143,7 @@ class NpEncoder(json.JSONEncoder):
 def main():
     coco_json = OrderedDict()
 
-    mask_image_path = 'data/train_mask' 
+    mask_image_path = 'data/train_mask' # TODO write your path
 
     ### simple info (모든 이미지 공통사항) ###
     info = get_coco_info()
@@ -185,7 +184,7 @@ def main():
     coco_json['categories'] = categories
 
     # write json
-    with open('annotations.json', 'w', encoding='utf-8') as make_file:
+    with open('annotations.json', 'w', encoding='utf-8') as make_file: # TODO write your file name
         json.dump(coco_json, make_file, cls=NpEncoder, ensure_ascii=False, indent='\t')
     
     
